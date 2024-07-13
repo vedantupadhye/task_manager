@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager - Vedant Upadhye</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="head">Task Manager App</div>
+    <div class="container">
+        <div id="left">
+            <h1 id="title">ToDo</h1>
+            <div class="list" draggable="true">List item 1</div>
+            <div class="list" draggable="true">List item 2</div>
+            <div class="list" draggable="true">List item 3</div>
+            <div class="list" draggable="true">List item 4</div>
+        </div>
+        <div id="right">
+            <h1 id="title">In progress</h1>
+        </div>
+        <div id="end">
+            <h1 id="title">Completed</h1>
+        </div>
+    </div>
+
+<script>
+
+let lists = document.getElementsByClassName("list");
+let rightBox = document.getElementById("right");
+let leftBox = document.getElementById("left");
+let endBox = document.getElementById("end");
+
+for(list of lists){
+    list.addEventListener("dragstart",function(e){
+        let selected = e.target;
+
+        rightBox.addEventListener("dragover",function (e){
+            e.preventDefault();
+        })
+
+        rightBox.addEventListener("drop", function(e){
+            rightBox.appendChild(selected)
+            selected = null;
+        })
+
+        leftBox.addEventListener("dragover",function (e){
+            e.preventDefault();
+        })
+
+        leftBox.addEventListener("drop", function(e){
+           leftBox.appendChild(selected)
+            selected = null;
+        })
+
+        endBox.addEventListener("dragover",function (e){
+            e.preventDefault();
+        })
+
+       endBox.addEventListener("drop", function(e){
+           endBox.appendChild(selected)
+            selected = null;
+        })
+    })
+}
+
+</script>
+
+
+</body>
+</html>
